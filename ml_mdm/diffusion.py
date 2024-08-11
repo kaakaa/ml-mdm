@@ -257,12 +257,11 @@ class NestedModel(Model):
                 torch.cat([p, p.new_zeros(batch_size - p.size(0), *p.size()[1:])], 0)
                 for p in p_t
             ]
-
         # recompute the noise from pred_low
         if not self.diffusion_config.no_use_residual:
-            assert (
-                self.diffusion_config.mixed_batch is None
-            ), "do not support mixed-batch"
+            # assert (
+            #     self.diffusion_config.mixed_batch is None
+            # ), "do not support mixed-batch"
             x_t, x_t_low = x_t
             pred, pred_low = p_t
             pred_x0_low, _ = self.sampler.get_x0_eps_from_pred(x_t_low, pred_low, times)
