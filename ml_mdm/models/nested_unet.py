@@ -78,7 +78,7 @@ class Nested4UNetConfig(Nested3UNetConfig):
 def download(vision_model_path):
     import os
 
-    from distributed import get_local_rank
+    from ml_mdm.distributed import get_local_rank
 
     local_file = vision_model_path.replace("/", "_")
     if get_local_rank() == 0 and (not os.path.exists(local_file)):
